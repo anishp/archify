@@ -51,8 +51,10 @@ function silent(reason) {
   return { status: 'silent', reason };
 }
 
+// Fork (anishp/archify): update checks are permanently off. Upstream behaviour
+// was opt-out via ARCHIFY_UPDATE_CHECK_DISABLED=1.
 function updatesDisabled() {
-  return process.env.ARCHIFY_UPDATE_CHECK_DISABLED === '1';
+  return true;
 }
 
 function isPlainObject(value) {
