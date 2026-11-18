@@ -497,6 +497,21 @@ are inclusive and never summed. Do not mark a critical path or waiting time
 unless the input states the dependency. See
 [`../renderers/waterfall/README.md`](../renderers/waterfall/README.md).
 
+### Gitgraph
+
+A gitgraph draws git history. `branches[]` are lanes, top to bottom in order;
+`commits[]` are columns, left to right in the order they were made, and a
+parent must come before its child. Each commit has `id` and `branch`, plus
+optional `label` (e.g. a short hash; defaults to `id`), `message`, `parents`,
+`kind` (`highlight`, `reverse`), `cherry_pick_of`, `tags`, `refs`, and
+`detail`. Omitted `parents` means the previous commit on the same branch, or
+`branch.from` for a branch's first commit; `[]` is a root; two or more parents
+make a merge. Put release/RC names in `tags` and branch pointers, remote
+branches and `HEAD` in `refs` — a fast-forwarded branch is a ref on the
+commit it now points at, not a lane. Unknown branches or commits, out-of-order
+parents, a tag on two commits, and a branch with no commits are refused. See
+[`../renderers/gitgraph/README.md`](../renderers/gitgraph/README.md).
+
 ### Lifecycle
 
 Schema v3 is the only lifecycle contract. `mainPath` lists the happy path from

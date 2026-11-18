@@ -484,5 +484,11 @@
   "legend.waterfall.ok": "مكتمل",
   "legend.waterfall.error": "خطأ",
   "legend.waterfall.cancelled": "ملغى",
-  "legend.waterfall.incomplete": "غير مكتمل (بلا نهاية مسجَّلة)"
+  "legend.waterfall.incomplete": "غير مكتمل (بلا نهاية مسجَّلة)",
+  "diagram.description.gitgraph": "مخطط إيداعات Git أنشأه Archify.",
+  "gitgraph.parents": "الآباء: {parents}",
+  "legend.gitgraph.merge": "إيداع دمج",
+  "legend.gitgraph.highlight": "إيداع مُميَّز",
+  "legend.gitgraph.reverse": "إيداع تراجع",
+  "legend.gitgraph.cherryPick": "منتقى من"
 }

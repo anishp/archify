@@ -484,5 +484,11 @@
   "legend.waterfall.ok": "已完成",
   "legend.waterfall.error": "錯誤",
   "legend.waterfall.cancelled": "已取消",
-  "legend.waterfall.incomplete": "未完成（沒有結束記錄）"
+  "legend.waterfall.incomplete": "未完成（沒有結束記錄）",
+  "diagram.description.gitgraph": "由 Archify 產生的 Git 提交圖。",
+  "gitgraph.parents": "父提交：{parents}",
+  "legend.gitgraph.merge": "合併提交",
+  "legend.gitgraph.highlight": "重點提交",
+  "legend.gitgraph.reverse": "還原提交",
+  "legend.gitgraph.cherryPick": "揀選自"
 }

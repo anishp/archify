@@ -138,6 +138,7 @@ const EVIDENCE_NODE_COLLECTIONS = {
   class: 'types',
   timeline: 'events',
   waterfall: 'spans',
+  gitgraph: 'commits',
 };
 
 function evidenceNodes(diagramType, diagram) {

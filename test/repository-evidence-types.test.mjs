@@ -27,6 +27,7 @@ const TYPES = [
   { type: 'class', collection: 'types', example: 'payments.class.json', first: 'order_service' },
   { type: 'timeline', collection: 'events', example: 'payment-incident.timeline.json', first: 'deploy' },
   { type: 'waterfall', collection: 'spans', example: 'checkout-request.waterfall.json', first: 'request' },
+  { type: 'gitgraph', collection: 'commits', example: 'release-hotfix.gitgraph.json', first: 'v103' },
 ];
 
 function git(repo, ...args) {
@@ -233,7 +234,7 @@ for (const [typeIndex, shape] of TYPES.entries()) {
       assert.equal(result.status, 1, type);
       const receipt = JSON.parse(result.stdout);
       assert.equal(receipt.ok, false, type);
-      if (['tree', 'timeline', 'waterfall'].includes(type)) {
+      if (['tree', 'timeline', 'waterfall', 'gitgraph'].includes(type)) {
         const duplicateDiagnostic = receipt.diagnostics.find((entry) => entry.code === `${type}/duplicate-id`);
         assert.ok(duplicateDiagnostic, `${type}: duplicate ID diagnostic missing`);
         assert.equal(duplicateDiagnostic.severity, 'error');

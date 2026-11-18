@@ -484,5 +484,11 @@
   "legend.waterfall.ok": "Completado",
   "legend.waterfall.error": "Error",
   "legend.waterfall.cancelled": "Cancelado",
-  "legend.waterfall.incomplete": "Incompleto (sin fin registrado)"
+  "legend.waterfall.incomplete": "Incompleto (sin fin registrado)",
+  "diagram.description.gitgraph": "Un grafo de commits de git generado por Archify.",
+  "gitgraph.parents": "Padres: {parents}",
+  "legend.gitgraph.merge": "Commit de fusión",
+  "legend.gitgraph.highlight": "Commit destacado",
+  "legend.gitgraph.reverse": "Commit de reversión",
+  "legend.gitgraph.cherryPick": "Cherry-pick desde"
 }

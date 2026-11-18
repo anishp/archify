@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "diagram_type": "gitgraph",
+  "meta": {
+    "title": "Hotfix V1.04 while release V1.05 is in staging",
+    "subtitle": "The hotfix ships first, main fast-forwards to its tested RC, and the fix is merged back into develop and the open release.",
+    "locale": "en",
+    "output": "release-hotfix-gitgraph.html",
+    "quality_profile": "showcase"
+  },
+  "branches": [
+    { "name": "main", "caption": "released versions only" },
+    { "name": "hotfix/V1.04-ISS-091", "from": "v103" },
+    { "name": "release/V1.05", "caption": "staging" },
+    { "name": "develop", "caption": "dev environment" }
+  ],
+  "commits": [
+    { "id": "v103", "branch": "main", "label": "3fa2c1e", "message": "release V1.03", "tags": ["V1.03"] },
+    { "id": "feat", "branch": "develop", "parents": ["v103"], "label": "8b1d07a", "message": "ECN-0123: dose display" },
+    { "id": "cut", "branch": "release/V1.05", "parents": ["feat"], "label": "c41e9d2", "message": "freeze scope", "tags": ["V1.05-rc1"] },
+    { "id": "fix", "branch": "hotfix/V1.04-ISS-091", "label": "e07b5aa", "message": "ISS-091: UI freeze", "tags": ["V1.04", "V1.04-rc1"], "refs": ["main"], "detail": "V&V passed on rc1; main fast-forwarded to this commit." },
+    { "id": "back-dev", "branch": "develop", "parents": ["feat", "fix"], "label": "5d9c013", "message": "merge hotfix" },
+    { "id": "back-rel", "branch": "release/V1.05", "parents": ["cut", "fix"], "label": "a62f4e8", "message": "merge hotfix" },
+    { "id": "rc2", "branch": "release/V1.05", "label": "91c7d3b", "message": "ISS-095: alarm text", "tags": ["V1.05-rc2"], "refs": ["HEAD"] }
+  ]
+}

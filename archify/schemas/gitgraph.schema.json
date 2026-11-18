@@ -1,0 +1,165 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/tt-a1i/archify/schemas/gitgraph.schema.json",
+  "title": "Archify Git Commit Graph",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "diagram_type",
+    "meta",
+    "branches",
+    "commits"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "diagram_type": {
+      "const": "gitgraph"
+    },
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "locale": {
+          "$ref": "common.schema.json#/$defs/locale"
+        },
+        "translations": {
+          "$ref": "common.schema.json#/$defs/translations"
+        },
+        "subtitle": {
+          "type": "string"
+        },
+        "output": {
+          "type": "string"
+        },
+        "animation": {
+          "$ref": "common.schema.json#/$defs/animation"
+        },
+        "visual_preset": {
+          "$ref": "common.schema.json#/$defs/visualPreset"
+        },
+        "quality_profile": {
+          "$ref": "common.schema.json#/$defs/qualityProfile"
+        },
+        "repository": {
+          "$ref": "common.schema.json#/$defs/repository"
+        },
+        "views": {
+          "$ref": "common.schema.json#/$defs/guidedViews"
+        }
+      }
+    },
+    "branches": {
+      "type": "array",
+      "minItems": 1,
+      "description": "One lane per branch, drawn top to bottom in this order.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[^\\s]+$",
+            "description": "Git branch name as written in git, e.g. main, feature/ECN-0123-adc, origin/main."
+          },
+          "caption": {
+            "type": "string",
+            "description": "Short note under the lane name, e.g. the environment it deploys to."
+          },
+          "from": {
+            "$ref": "common.schema.json#/$defs/id",
+            "description": "Commit the branch was cut from; the parent of its first commit when that commit states no parents."
+          }
+        }
+      }
+    },
+    "commits": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Commits in the order they were made; this order is the left-to-right column order. A parent must appear before its child.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "branch"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "common.schema.json#/$defs/id"
+          },
+          "branch": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Name of the branch (lane) the commit was made on."
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Text under the commit dot, e.g. a short hash; defaults to id."
+          },
+          "message": {
+            "type": "string",
+            "description": "Commit message or annotation, drawn as a muted second line."
+          },
+          "parents": {
+            "type": "array",
+            "items": {
+              "$ref": "common.schema.json#/$defs/id"
+            },
+            "description": "Parent commit ids, first parent first. Omit for the previous commit on the same branch (or branch.from); use [] for a root commit. Two or more parents make a merge commit."
+          },
+          "kind": {
+            "enum": [
+              "normal",
+              "highlight",
+              "reverse"
+            ],
+            "description": "highlight marks a commit to look at (e.g. a conflict side); reverse marks a revert commit."
+          },
+          "cherry_pick_of": {
+            "$ref": "common.schema.json#/$defs/id",
+            "description": "Commit this one was cherry-picked from; drawn as a dashed link, not a parent."
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "refs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "Branch pointers and HEAD at this commit, e.g. [\"main\", \"HEAD\"] or [\"origin/main\"]."
+          },
+          "detail": {
+            "type": "string"
+          },
+          "sources": {
+            "$ref": "common.schema.json#/$defs/sourceReferences"
+          }
+        }
+      }
+    },
+    "cards": {
+      "$ref": "common.schema.json#/$defs/cards"
+    }
+  }
+}

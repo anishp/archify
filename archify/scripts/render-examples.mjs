@@ -25,6 +25,7 @@ const TARGETS = [
   ['timeline', 'archify-dev-activity.timeline.json', 'timeline-archify-dev-activity-rendered.html'],
   ['waterfall', 'checkout-request.waterfall.json', 'waterfall-checkout-request-rendered.html'],
   ['waterfall', 'example-rebuild.waterfall.json', 'waterfall-example-rebuild-rendered.html'],
+  ['gitgraph', 'release-hotfix.gitgraph.json', 'gitgraph-release-hotfix-rendered.html'],
 ];
 
 for (const [mode, input, output] of TARGETS) {

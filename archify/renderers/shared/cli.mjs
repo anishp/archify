@@ -111,7 +111,7 @@ export async function loadDiagramWithBrandMarks(options) {
   return loaded;
 }
 
-const START_TYPES = new Set(['architecture', 'workflow', 'sequence', 'dataflow', 'lifecycle', 'erd', 'tree', 'class', 'timeline', 'waterfall']);
+const START_TYPES = new Set(['architecture', 'workflow', 'sequence', 'dataflow', 'lifecycle', 'erd', 'tree', 'class', 'timeline', 'waterfall', 'gitgraph']);
 
 function isFilesystemError(error) {
   return typeof error?.code === 'string'
@@ -313,6 +313,7 @@ const SEMANTIC_COLLECTIONS = {
   class: 'types',
   timeline: 'events',
   waterfall: 'spans',
+  gitgraph: 'commits',
 };
 
 const RELATIONSHIP_COLLECTIONS = {

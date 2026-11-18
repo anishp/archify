@@ -49,7 +49,7 @@ function svgBlock(html) {
 test('all ten diagram modes enable motion without an authoring switch', () => {
   const examples = { ...CASES, erd: 'orders.erd.json', class: 'payments.class.json',
     tree: 'payment-platform.tree.json', timeline: 'payment-incident.timeline.json',
-    waterfall: 'checkout-request.waterfall.json' };
+    waterfall: 'checkout-request.waterfall.json', gitgraph: 'release-hotfix.gitgraph.json' };
   for (const [mode, example] of Object.entries(examples)) {
     const defaultSvg = svgBlock(render(mode, example, null, null));
     assert.match(defaultSvg, /data-animation="trace"/, mode);
